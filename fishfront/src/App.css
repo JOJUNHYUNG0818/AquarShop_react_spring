@@ -1,0 +1,143 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.search-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2; /* 검색 컨테이너가 비디오 위에 표시되도록 */
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: width 0.3s ease;
+}
+
+.search-container.open {
+  width: 250px; /* 검색창이 열릴 때의 너비 */
+}
+
+.search-container input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px 0 0 3px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.3);
+  flex: 1;
+}
+
+.search-container button {
+  padding: 3px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 0 3px 3px 0;
+  outline: none;
+}
+
+.search-container button:hover {
+  background: #555;
+}
+
+.search-icon {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  z-index: 2; /* 메뉴 버튼이 비디오 위에 표시되도록 */
+  cursor: pointer;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: -250px; /* 메뉴바의 초기 위치 조정 */
+  width: 250px; /* 메뉴바의 크기 넓힘 */
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* 배경색 조정 */
+  transition: left 0.3s ease; /* 애니메이션 효과 */
+  z-index: 999; /* 메뉴가 비디오 위에 표시되도록 */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+  padding-top: 60px; /* 리스트 위치 조정 */
+}
+
+.menu.open {
+  left: 0; /* 메뉴가 열릴 때의 위치 */
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 20px; /* 리스트 위치를 아래로 조정 */
+}
+
+.menu li {
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.menu li:hover {
+  transform: translateX(5px);
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 2em;
+}
