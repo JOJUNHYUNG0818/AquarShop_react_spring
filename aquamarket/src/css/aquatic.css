@@ -1,0 +1,32 @@
+.carousel-container {
+  width: 80%;
+  margin: auto;
+  padding: 40px 0;
+}
+
+.carousel-slide {
+  position: relative;
+  padding: 10px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 300px; /* 고정된 높이 */
+  object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너에 맞춤 */
+  border-radius: 15px;
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.carousel-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
