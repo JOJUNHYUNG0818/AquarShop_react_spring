@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // react-router-dom에서 필요한 요소 import
 import "./App.css";
 import videoSrc from "./videos/보라카이.mp4"; // 비디오 파일 import
 
-const App = () => {
+const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -42,29 +43,21 @@ const App = () => {
       )}
       <div className={`search-container ${searchOpen ? "open" : ""}`}>
         {!searchOpen ? (
-          <button onClick={toggleSearch} className="search-icon">
-            🔍
-          </button>
+          <button onClick={toggleSearch} className="search-icon"></button>
         ) : (
           <>
+            <button onClick={toggleSearch} className="search-icon"></button>
             <input type="text" placeholder="Search..." />
             <button>검색</button>
           </>
         )}
       </div>
+      <div className={`login-container`}>
+        <Link to="/login" className="login-icon"></Link>
+      </div>
       <div className={`menu ${menuOpen ? "open" : ""}`} id="menu">
         <ul>
-          {[
-            "BAGS",
-            "ACCESSORIES",
-            "APPAREL",
-            "ABOUT FREITAG",
-            "SERVICES",
-            "F-EDERATION",
-            "CONTACT CENTER",
-            "STORES",
-            "LOGIN",
-          ].map((item) => (
+          {["웨이크보드", "웨이크서핑", "수상스키"].map((item) => (
             <li key={item}>
               <a href="#" onClick={handleMenuClick}>
                 {item}
@@ -77,6 +70,26 @@ const App = () => {
         <h1>AQUARIUM SHOP</h1>
       </div>
     </div>
+  );
+};
+
+const Login = () => {
+  return (
+    <div>
+      <h2>Login Page</h2>
+      {/* 로그인 폼 등을 추가할 수 있음 */}
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 };
 
