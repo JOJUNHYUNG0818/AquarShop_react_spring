@@ -1,14 +1,27 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../css/login.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // 로그인 처리 로직을 여기에 추가합니다.
-    console.log("Username:", username);
-    console.log("Password:", password);
+    try {
+      const response = await axios.post("http://localhost:8099/login", {
+        username,
+        password,
+      });
+      console.log(response.data);
+      if (response.data === "Login successful") {
+        alert("로그인 성공");
+      } else {
+        alert("로그인 실패");
+      }
+    } catch (error) {
+      alert("서버 연결 실패");
+    }
   };
 
   return (

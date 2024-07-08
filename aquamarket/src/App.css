@@ -71,7 +71,7 @@ html {
 .search-icon {
   width: 25px; /* 버튼의 너비 */
   height: 25px; /* 버튼의 높이 */
-  background-image: url("C:/Users/tj/Desktop/aquashop/4차프로젝트/aquamarket/src/images/search_icon.png"); /* 이미지 파일 경로 */
+  background-image: url("images/search_icon.png"); /* 이미지 파일 경로 */
   background-size: cover; /* 이미지를 버튼 크기에 맞게 조정 */
   background-repeat: no-repeat; /* 이미지 반복 없음 */
   background-color: transparent;
@@ -86,7 +86,7 @@ html {
 .login-icon {
   width: 25px; /* 버튼의 너비 */
   height: 25px; /* 버튼의 높이 */
-  background-image: url("C:/Users/tj/Desktop/aquashop/4차프로젝트/aquamarket/src/images/login_icon.png"); /* 이미지 파일 경로 */
+  background-image: url("images/login_icon.png"); /* 이미지 파일 경로 */
   background-size: cover; /* 이미지를 버튼 크기에 맞게 조정 */
   background-repeat: no-repeat; /* 이미지 반복 없음 */
   background-color: transparent;
