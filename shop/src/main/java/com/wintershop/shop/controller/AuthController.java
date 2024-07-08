@@ -1,33 +1,31 @@
 package com.wintershop.shop.controller;
 
 import com.wintershop.shop.model.User;
-import com.wintershop.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
-@Controller
+@RestController
 public class AuthController {
-
     @Autowired
-    private UserService userService;
+    private AuthenticationManager authenticationManager;
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        System.out.println("접속 성공");
+
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+            );
+        } catch (AuthenticationException e) {
+            return "Login failed";
+        }
+        return "Login successful";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String register(User user) {
-        userService.save(user);
-        return "redirect:/login";
-    }
 }
