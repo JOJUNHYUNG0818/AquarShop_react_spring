@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/login.css";
-const Login = () => {
+import { useNavigate } from "react-router-dom";
+
+const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,6 +19,8 @@ const Login = () => {
       console.log(response.data);
       if (response.data === "Login successful") {
         alert("로그인 성공");
+        setIsLoggedIn(true); // 로그인 성공 시 상태 업데이트
+        navigate("/");
       } else {
         alert("로그인 실패");
       }

@@ -1,3 +1,4 @@
+/* 기존 CSS */
 body,
 html {
   margin: 0;
@@ -36,6 +37,40 @@ html {
   display: flex;
   align-items: center;
   transition: width 0.3s ease;
+}
+
+.login-dropdown {
+  position: absolute;
+  top: 50px; /* 로그인 아이콘 아래에 위치 */
+  right: -30px;
+  background: rgba(49, 30, 30, 0.9); /* 배경색 조정 */
+  border: 1px solid #000000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 150px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  z-index: 2; /* 드롭다운이 비디오 위에 표시되도록 */
+}
+
+.login-dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #000000;
+}
+
+.login-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.login-dropdown li a {
+  text-decoration: none;
+  color: #f0f0f0;
+  display: block;
+}
+
+.login-dropdown li a:hover {
+  background: #f0f0f0;
 }
 
 .search-container {

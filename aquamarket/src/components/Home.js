@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import "../App.css"; // 상위 폴더의 App.css를 임포트
 import videoSrc from "../videos/fish.mp4";
 
-const Home = () => {
+const Home = ({ isLoggedIn, setIsLoggedIn }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
 
   const toggleMenu = (event) => {
     event.stopPropagation(); // 이벤트 전파 중지
@@ -18,6 +19,9 @@ const Home = () => {
     }
     if (searchOpen) {
       setSearchOpen(false);
+    }
+    if (loginOpen) {
+      setLoginOpen(false);
     }
   };
 
@@ -32,6 +36,16 @@ const Home = () => {
 
   const handleSearchClick = (event) => {
     event.stopPropagation(); // 이벤트 전파 중지
+  };
+
+  const toggleLogin = (event) => {
+    event.stopPropagation();
+    setLoginOpen(!loginOpen);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false); // 로그아웃 상태로 변경
+    closeMenu();
   };
 
   return (
@@ -65,7 +79,35 @@ const Home = () => {
         )}
       </div>
       <div className={`login-container`}>
-        <Link to="/login" className="login-icon"></Link>
+        <div onClick={toggleLogin} className="login-icon"></div>
+        {loginOpen && (
+          <ul className="login-dropdown">
+            {isLoggedIn ? (
+              <>
+                <li onClick={handleLogout}>
+                  <span>로그아웃</span>
+                </li>
+                <li>
+                  <Link to="/cart">장바구니</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login" onClick={() => setLoginOpen(false)}>
+                    로그인하기
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup">회원가입하기</Link>
+                </li>
+                <li>
+                  <Link to="/cart">장바구니</Link>
+                </li>
+              </>
+            )}
+          </ul>
+        )}
       </div>
       <div className={`menu ${menuOpen ? "open" : ""}`} id="menu">
         <ul>
